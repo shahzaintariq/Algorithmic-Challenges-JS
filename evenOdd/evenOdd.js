@@ -3,11 +3,7 @@ EVEN ODD CHALLENGE
 */
 
 function evenOdd(num){
-    if(num % 2 === 0){
-        return 'EVEN';
-    }else{
-        return 'ODD';
-    }
+   return num % 2 === 0 ? 'EVEN' : 'ODD'
 }
 
 console.log(evenOdd(8))
