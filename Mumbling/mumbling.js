@@ -12,11 +12,7 @@ The parameter of accum is a string which includes only letters from a..z and A..
 
 function calStr(letters,counter){
     let result = '';
-    if(counter === 1){
-        result = letters.toUpperCase();
-        result = toJadenCase(result)
-        return result
-    }
+    
     for(let i=1; i<=counter; i++){
         result += letters;
     }
