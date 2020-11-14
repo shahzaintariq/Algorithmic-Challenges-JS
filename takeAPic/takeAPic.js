@@ -38,17 +38,17 @@ function sortPhotos(arr){
     newArr =  newArr.slice(0,5);
     newArr = newArr.reverse()
     let numArr = [];
-    // newArr.filter((v,i) => {
-    //     newArr[i] = v.slice(0,8);
-    //     numArr.push(v.slice(8))
-    // })
+    newArr.filter((v,i) => {
+        newArr[i] = v.slice(0,8);
+        numArr.push(v.slice(8))
+    })
     numArr = numArr.sort(function(a, b){return a-b});
     numArr[numArr.length] = (Number(numArr[numArr.length-1]) + 1).toString()
     newArr.push(newArr[newArr.length - 1]);
 
-    // newArr.filter((v,i)=>{
-    //     newArr[i] = v+numArr[i]
-    // })
+    newArr.filter((v,i)=>{
+        newArr[i] = v+numArr[i]
+    })
 
     console.log(newArr);
 }
