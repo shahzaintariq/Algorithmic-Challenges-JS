@@ -31,28 +31,31 @@ sortPhotos["2016.img1"]) ==["2016.img1","2016.img2"]
 //     return result;
 
 // };
-
-
-function sortPhotos(arr){
-    let newArr = arr.sort().reverse();
-    newArr =  newArr.slice(0,5);
-    newArr = newArr.reverse()
-    let numArr = [];
-    newArr.filter((v,i) => {
-        newArr[i] = v.slice(0,8);
-        numArr.push(v.slice(8))
-    })
-    numArr = numArr.sort(function(a, b){return a-b});
-    numArr[numArr.length] = (Number(numArr[numArr.length-1]) + 1).toString()
-    newArr.push(newArr[newArr.length - 1]);
-
-    newArr.filter((v,i)=>{
-        newArr[i] = v+numArr[i]
-    })
-
-    console.log(newArr);
-}
-
+function sortPhotos(pics){
+    let recents = pics.sort(comparePhotos).slice(-5);
+    let last = parsePhoto(recents[recents.length - 1]);
+    recents.push(`${last[1]}.img${Number(last[2]) + 1}`);
+    return recents;
+  }
+  
+  function comparePhotos(lhs, rhs) {
+    let left = parsePhoto(lhs);
+    let right = parsePhoto(rhs);
+    
+    let lhsYear = Number(left[1]);
+    let rhsYear = Number(right[1]);
+    
+    if (lhsYear === rhsYear) {
+      return Number(left[2]) - Number(right[2]);
+    } else {
+      return lhsYear - rhsYear;
+    }  
+  }
+  
+  function parsePhoto(photo) {
+    return photo.match(/^(\d+)\.img(\d+)$/);
+  }
+  
 sortPhotos(["2014.img12", "2008.img12", "2015.img16", "2010.img7", "2015.img1", "2016.img18", "2011.img14", "2012.img17"])
 // Expected: '[\'2012.img17\', \'2014.img12\', \'2015.img1\', \'2015.img16\', \'2016.img18\', \'2016.img19\']'
 // // makeArray(["2009.img14", "2014.img20", "2010.img4", "2014.img2", "2013.img20", "2016.img13", "2016.img5", "2012.img8", "2009.img19", "2013.img10","2012.img4", "2016.img15", "2014.img9", "2014.img17", "2008.img1", "2013.img16", "2015.img11", "2011.img8", "2010.img19", "2014.img1", "2016.img4", "2016.img12"])
