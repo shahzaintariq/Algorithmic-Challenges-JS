@@ -21,6 +21,15 @@ function arrayDiff(a, b) {
     return array
 }
 
+/* other solutions might be*/
+// function array_diff(a, b) {
+//     return a.filter(e => !b.includes(e));
+//   }
+
+// function array_diff(a, b) {
+//     return a.filter(e => !b.includes(e));
+//   }
+  
 
 // console.log(arrayDiff([1,2,2,2,2,2,2,3],[2]))
 // console.log(arrayDiff([-14,-6,-17,-2,15,-10,20,6,-19,-19,13,19,20],[13,19,-19,-14]))
